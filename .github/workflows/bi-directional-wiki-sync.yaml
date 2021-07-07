@@ -15,6 +15,8 @@ env:
   GIT_AUTHOR_NAME: ${{ github.actor }}
 #  The default GIT_AUTHOR_NAME is github.actor@users.noreply.github.com
   GIT_AUTHOR_EMAIL: ${{ github.actor }}@users.noreply.github.com
+  WIKI: wiki
+  DOCS: docs
 
 jobs:
   job-sync-docs-to-wiki:
@@ -26,8 +28,8 @@ jobs:
       - name: Sync docs to wiki
         uses: newrelic/wiki-sync-action@master
         with:
-          source: docs
-          destination: wiki
+          source: ${{ env.DOCS }}
+          destination: ${{ env.WIKI }}
           token: ${{ secrets.NEWRELIC_BOT_TOKEN }}
 #          gitAuthorName: ${{ env.GIT_AUTHOR_NAME }}
 #          gitAuthorEmail: ${{ env.GIT_AUTHOR_EMAIL }}
@@ -44,10 +46,10 @@ jobs:
       - name: Sync Wiki to Docs
         uses: newrelic/wiki-sync-action@master
         with:
-          source: wiki
-          destination: docs
+          source: ${{ env.WIKI }}
+          destination: ${{ env.DOCS }}
           token: ${{ secrets.NEWRELIC_BOT_TOKEN }}
 #          gitAuthorName: ${{ env.GIT_AUTHOR_NAME }}
 #          gitAuthorEmail: ${{ env.GIT_AUTHOR_EMAIL }}
           branch: ${{ env.default_branch }}
-          commitMessage: Sync $SOURCE to $DESTINATION
+          commitMessage: Sync ${{ env.WIKI }} to ${{ env.DOCS }}
