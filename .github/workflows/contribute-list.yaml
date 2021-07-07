@@ -1,7 +1,8 @@
 on:
   push:
-    # Trigger only when wiki directory changes
-    - 'wiki/**'
+    paths:
+      # Trigger only when wiki directory changes
+      - 'wiki/**'
 
 jobs:
     contrib-readme-job:
