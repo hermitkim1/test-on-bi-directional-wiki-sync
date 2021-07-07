@@ -3,6 +3,8 @@ on:
     paths:
       # Trigger only when wiki directory changes
       - 'wiki/**'
+    branches:
+      - main
 
 jobs:
     contrib-readme-job:
