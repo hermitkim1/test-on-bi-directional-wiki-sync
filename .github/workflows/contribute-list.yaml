@@ -1,4 +1,5 @@
-on: push
+on: 
+  gollum
 
 jobs:
     contrib-readme-job:
