@@ -1,10 +1,4 @@
-on:
-  push:
-    paths:
-      # Trigger only when wiki directory changes
-      - 'wiki/**'
-    branches:
-      - main
+on: push
 
 jobs:
     contrib-readme-job:
